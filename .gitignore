@@ -1,7 +1,9 @@
 /src_old
 /wally.lock
-/.vscode
 /package-lock.json
-/Packages
+Packages
 /.gitconfig
 /out
+/sourcemap.json
+sourcemap
+sourcemap.json

@@ -1,1 +1,2 @@
-local packages = script.Parent
+local Package = script
+local Packages = Package.Parent
