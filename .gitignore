@@ -1,9 +1,19 @@
-/src_old
-/wally.lock
-/package-lock.json
-Packages
-/.gitconfig
-/out
-/sourcemap.json
-sourcemap
+
+
+# Directories
+out/**
+Packages/**
+scripts/compile/__pycache__/**
+
+# Files
 sourcemap.json
+wally.lock
+package-lock.json
+
+# File types
+*.lock
+*.gitconfig
+*.rbxl
+*.rbxlx
+*.lock
+
