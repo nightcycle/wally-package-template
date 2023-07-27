@@ -41,10 +41,6 @@ jobs:
       # Checkout your Git repo
       - uses: actions/checkout@v2
 
-      # Syncronize version data
-      - name: Syncronize version labels
-        run: python scripts/workflow/sync-version.py ${{ needs.get_published_release.outputs.tag_name }}
-     
       # Install foreman and all foreman tools
       - uses: Roblox/setup-foreman@v1
         with:
