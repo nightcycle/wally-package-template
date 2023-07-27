@@ -22,16 +22,7 @@ jobs:
           echo "::set-output name=tag_name::${{ github.event.release.tag_name }}"
           echo "::set-output name=release_id::${{ github.event.release.id }}"
           echo "::set-output name=upload_url::${{ github.event.release.upload_url }}"
-            
-          # Use the GitHub API to fetch the repository description            
-          description_prefix="\"description\":"
-          curl -L "https://api.github.com/repos/${repo_owner}/${repo_name}" > "desc.text"
-          empty_str=""
-          desc=$(<desc.text)
-          desc=$(echo "$desc" | grep -F "$description_prefix")
-          desc="${desc/${description_prefix}/${empty_str}}"
-          repo_desc=$(echo "$desc" | grep -o '"[^"]*"')
-          echo "::set-output name=repo_desc::$repo_desc"
+
 
           # Set repo_name and repo_owner_name as output variables
           repo_name=${{ github.repository }}
@@ -39,6 +30,16 @@ jobs:
 
           repo_owner_name=${{ github.repository_owner }}
           echo "::set-output name=repo_owner_name::$repo_owner_name"
+            
+          # Use the GitHub API to fetch the repository description            
+          description_prefix="\"description\":"
+          curl -L "https://api.github.com/repos/${repo_owner_name}/${repo_name}" > "desc.text"
+          empty_str=""
+          desc=$(<desc.text)
+          desc=$(echo "$desc" | grep -F "$description_prefix")
+          desc="${desc/${description_prefix}/${empty_str}}"
+          repo_desc=$(echo "$desc" | grep -o '"[^"]*"')
+          echo "::set-output name=repo_desc::$repo_desc"
 
   build_and_publish_to_wally:
     needs: get_published_release
