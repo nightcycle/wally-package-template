@@ -161,4 +161,4 @@ jobs:
       - name: Publish release to Wally
         shell: bash
         run: |
-          wally publish --token ${{secrets.WALLY_TOKEN}}
+          wally publish ${{secrets.WALLY_TOKEN}}
