@@ -83,7 +83,12 @@ jobs:
         run: stylua src
 
       - name: style built scripts
-        run: stylua out
+        shell: bash
+        run: |
+          if [ ! -d "out" ]; then
+            mkdir "out"
+          fi
+          stylua out
 
       - name: generate sourcemap
         run: rojo sourcemap dev.project.json --output sourcemap.json
@@ -156,4 +161,4 @@ jobs:
       - name: Publish release to Wally
         shell: bash
         run: |
-          wally publish --token {{$WALLY_AUTH_TOKEN}}
+          wally publish --token ${{secrets.WALLY_TOKEN}}
