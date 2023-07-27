@@ -3,12 +3,12 @@
 # Directories
 out/**
 Packages/**
-scripts/compile/__pycache__/**
 
 # Files
 sourcemap.json
 wally.lock
 package-lock.json
+keys.txt
 
 # File types
 *.lock

@@ -1,10 +1,13 @@
 --!strict
---Services
---Packages
-local Package = script
-local Packages = Package.Parent
---Modules
---Types
---Constants
---Class
-
+local _Package = script
+local _Packages = _Package.Parent
+-- Services
+-- Packages
+-- Modules
+-- Types
+-- Constants
+-- Variables
+-- References
+-- Private Functions
+-- Class
+return {}
