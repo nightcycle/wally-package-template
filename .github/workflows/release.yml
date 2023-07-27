@@ -118,7 +118,7 @@ jobs:
           
           repo_name="${{needs.get_published_release.outputs.repo_name}}"
                     
-          repo_desc="${{needs.get_published_release.outputs.repo_desc}}"
+          repo_desc=${{needs.get_published_release.outputs.repo_desc}}
                     
           goal_version_str=${{needs.get_published_release.outputs.tag_name}}
           
