@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 repo_owner=nightcycle
-repo_name=nightcycle/wally-package-template
-forward_repo_pattern="${repo_owner}/"
+repo_name=wally-package-template
+
+description_prefix="\"description\":"
+curl -L "https://api.github.com/repos/${repo_owner}/${repo_name}" > "desc.text"
 empty_str=""
-repo_name="${repo_name/${forward_repo_pattern}/${empty_str}}"
-echo "$repo_name"
+desc=$(<desc.text)
+desc=$(echo "$desc" | grep -F "$description_prefix")
+desc="${desc/${description_prefix}/${empty_str}}"
+content=$(echo "$desc" | grep -o '"[^"]*"')
+echo "$content"

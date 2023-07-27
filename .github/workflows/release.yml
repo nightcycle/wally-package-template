@@ -23,8 +23,14 @@ jobs:
           echo "::set-output name=release_id::${{ github.event.release.id }}"
           echo "::set-output name=upload_url::${{ github.event.release.upload_url }}"
             
-          # Use the GitHub API to fetch the repository description
-          repo_desc=$(curl -s "https://api.github.com/repos/${{ github.repository }}/about" | jq -r '.description')
+          # Use the GitHub API to fetch the repository description            
+          description_prefix="\"description\":"
+          curl -L "https://api.github.com/repos/${repo_owner}/${repo_name}" > "desc.text"
+          empty_str=""
+          desc=$(<desc.text)
+          desc=$(echo "$desc" | grep -F "$description_prefix")
+          desc="${desc/${description_prefix}/${empty_str}}"
+          repo_desc=$(echo "$desc" | grep -o '"[^"]*"')
           echo "::set-output name=repo_desc::$repo_desc"
 
           # Set repo_name and repo_owner_name as output variables
