@@ -22,8 +22,9 @@ jobs:
           echo "::set-output name=tag_name::${{ github.event.release.tag_name }}"
           echo "::set-output name=release_id::${{ github.event.release.id }}"
           echo "::set-output name=upload_url::${{ github.event.release.upload_url }}"
-          # Extract the description from the release body and set it as an output variable
-          repo_desc=$(echo "${{ github.event.release.body }}" | head -n 1)
+            
+          # Use the GitHub API to fetch the repository description
+          repo_desc=$(curl -s "https://api.github.com/repos/${{ github.repository }}/about" | jq -r '.description')
           echo "::set-output name=repo_desc::$repo_desc"
 
           # Set repo_name and repo_owner_name as output variables
@@ -106,9 +107,16 @@ jobs:
       - name: Update version and labels
         shell: bash
         run: |
-          repo_owner=${{needs.get_published_release.outputs.repo_owner_name}}
-          repo_name=${{needs.get_published_release.outputs.repo_name}}
-          repo_desc=${{needs.get_published_release.outputs.repo_desc}}
+          repo_owner="${{needs.get_published_release.outputs.repo_owner_name}}"
+          
+          repo_name="${{needs.get_published_release.outputs.repo_name}}"
+          repo_name=nightcycle/wally-package-template
+          forward_repo_pattern="${repo_owner}/"
+          empty_str=""
+          repo_name="${repo_name/${forward_repo_pattern}/${empty_str}}"
+                    
+          repo_desc="${{needs.get_published_release.outputs.repo_desc}}"
+                    
           goal_version_str=${{needs.get_published_release.outputs.tag_name}}
           
           # remove letters
