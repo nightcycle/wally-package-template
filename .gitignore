@@ -3,6 +3,10 @@
 # Directories
 out/**
 Packages/**
+types
+lints
+tests/lsp/**
+tests/selene/**
 
 # Files
 sourcemap.json
