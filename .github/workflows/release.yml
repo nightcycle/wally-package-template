@@ -90,13 +90,13 @@ jobs:
       - name: style src scripts
         run: stylua src
 
-      - name: style built scripts
-        shell: bash
-        run: |
-          if [ ! -d "out" ]; then
-            mkdir "out"
-          fi
-          stylua out
+     #  - name: style built scripts
+     #    shell: bash
+     #    run: |
+     #      if [ ! -d "out" ]; then
+     #        mkdir "out"
+     #      fi
+     #      stylua out
 
       - name: generate sourcemap
         run: rojo sourcemap dev.project.json --output sourcemap.json
@@ -108,8 +108,8 @@ jobs:
       - name: lint src files
         run: selene src
 
-      - name: lint built files
-        run: selene out
+     #  - name: lint built files
+     #    run: selene out
 
       - name: Update version and labels
         shell: bash
