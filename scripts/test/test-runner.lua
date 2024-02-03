@@ -74,7 +74,7 @@ function test()
 	testDomain(Client)
 	testDomain(Shared)
 	testDomain(Server)
-	
+
 	error(result)
 	-- return result
 end
