@@ -9,5 +9,6 @@ local _Packages = _Package.Parent
 -- Variables
 -- References
 -- Private Functions
+
 -- Class
 return {}
