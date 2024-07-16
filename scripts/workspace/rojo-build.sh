@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-rojo build dev.project.json -o dev.rbxl
+rojo build --output synthetic.rbxl dev.project.json

@@ -1,5 +1,5 @@
 {
-	"name": "test",
+	"name": "package",
 	"tree": {
 	  "$className": "DataModel",
 	  "ReplicatedStorage": {

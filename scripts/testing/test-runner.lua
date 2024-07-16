@@ -11,8 +11,8 @@ local Shared = game:GetService("ReplicatedStorage"):WaitForChild("Shared") :: Fo
 local Server = game:GetService("ServerScriptService"):WaitForChild("Server") :: Folder
 
 type TestData = {
-	children: {[number]: TestData},
-	errors: {[number]: string},
+	children: { [number]: TestData },
+	errors: { [number]: string },
 	planNode: TestData?,
 	plan: TestData,
 	phrase: string?,
@@ -24,7 +24,7 @@ local result = "test-run result:"
 function parseResults(data: TestData, path: string)
 	if data.planNode and data.status then
 		if data.planNode.phrase then
-			path ..= "/"..data.planNode.phrase
+			path ..= "/" .. data.planNode.phrase
 			if #data.children == 0 then
 				if path then
 					local pathKeys = path:split("/")
@@ -35,13 +35,13 @@ function parseResults(data: TestData, path: string)
 						end
 					end
 					local finalPath = table.concat(finalKeys, "/")
-					local basePath = "\n["..data.status:lower().."]:["..finalPath.."]"
+					local basePath = "\n[" .. data.status:lower() .. "]:[" .. finalPath .. "]"
 					if #data.errors > 0 then
 						for i, errorMessage in ipairs(data.errors) do
 							local finalLine = errorMessage:split("\n")[1]
 							local content = (finalLine:split(":")[3]):sub(2)
-							content = content:gsub("\"", "'")
-							result ..= basePath..":[\""..content.."\"]"
+							content = content:gsub('"', "'")
+							result ..= basePath .. ':["' .. content .. '"]'
 						end
 					else
 						result ..= basePath
@@ -66,7 +66,7 @@ function test()
 					local filteredPath = modPath:gsub(domainPath, "")
 					local path = filteredPath:gsub(inst.Name, ""):gsub("%.", "/"):gsub("//", "/")
 					-- print(inst.Name, ":", filteredPath, ": ", path)
-					parseResults(data, domain.Name:lower()..path)
+					parseResults(data, domain.Name:lower() .. path)
 				end)
 			end
 		end
