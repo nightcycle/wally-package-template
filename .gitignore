@@ -1,15 +1,13 @@
-
-
 # Directories
-out/**
 Packages/**
 types
 lints
-tests/lsp/**
-tests/selene/**
+build
+serve
 
 # Files
 sourcemap.json
+darklua-sourcemap.json
 wally.lock
 package-lock.json
 keys.txt
@@ -18,5 +16,4 @@ keys.txt
 *.lock
 *.gitconfig
 *.rbxlx
-*.lock
-
+*.rbxl

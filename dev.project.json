@@ -1,15 +1,11 @@
 {
-	"name": "package",
+	"name": "package-dev",
 	"tree": {
-	  "$className": "DataModel",
-	  "ReplicatedStorage": {
-	    "$className": "ReplicatedStorage",
-	    "Packages": {
-		 "$path": "Packages",
-		 "package": {
-		   "$path": "src"
-		 }
-	    }
-	  }
+		"$className": "DataModel",
+		"ReplicatedStorage": {
+			"package": {
+				"$path": "model.project.json"
+			}
+		}
 	}
-   }
+}

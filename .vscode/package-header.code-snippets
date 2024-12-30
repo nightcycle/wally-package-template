@@ -1,32 +1,8 @@
 {
-	"import scripts": {
-		"prefix": "import scripts",
-		"body": [
-			"local $name = require(game:GetService(\"ServerStorage\"):WaitForChild(\"Scripts\"):WaitForChild(\"$name\")$0)"
-		],
-		"description": "Imports a scripts module.",
-		"scope": "lua,luau"
-	},
-	"import sub-scripts": {
-		"prefix": "import sub-scripts",
-		"body": [
-			"local $name${sub} = require(game:GetService(\"ServerStorage\"):WaitForChild(\"Scripts\"):WaitForChild(\"$name\"):WaitForChild(\"$sub\")$0)"
-		],
-		"description": "Imports a scripts sub-module.",
-		"scope": "lua,luau"
-	},
-	"import server": {
-		"prefix": "import server",
-		"body": [
-			"local $name = require(game:GetService(\"ServerScriptService\"):WaitForChild(\"Server\"):WaitForChild(\"$name\")$0)"
-		],
-		"description": "Imports a server module.",
-		"scope": "lua,luau"
-	},
 	"import child": {
 		"prefix": "import child",
 		"body": [
-			"local $name = require(script:WaitForChild(\"$name\")$0)"
+			"local $name = require(\"./$0\")"
 		],
 		"description": "Imports a child module.",
 		"scope": "lua,luau"
@@ -47,12 +23,12 @@
 		"description": "Unpacks and a type.",
 		"scope": "lua,luau"
 	},
-	"import packages": {
-		"prefix": "import package",
+	"import wally package": {
+		"prefix": "import wally",
 		"body": [
-			"local $name = require(_Packages:WaitForChild(\"$name\"))"
+			"local $name = require(\"@wally/$name\")"
 		],
-		"description": "Imports a package module.",
+		"description": "Imports a wally package module.",
 		"scope": "lua,luau"
 	},
 	"import header": {
@@ -60,13 +36,9 @@
 		"body": [
 			"--!strict",
 			"--!native",
-			"local _Package = script",
-			"local _Packages = _Package.Parent",
 			"-- Services",
-			"-- stylua: ignore start",
 			"-- Packages",
 			"-- Modules",
-			"-- stylua: ignore end",
 			"-- Types",
 			"-- Constants",
 			"-- Variables",
