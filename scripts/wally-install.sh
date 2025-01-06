@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 ROJO_PROJECT="$1"
 wally install
 if [ ! -d "Packages" ]; then
