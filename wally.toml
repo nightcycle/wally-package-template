@@ -1,10 +1,13 @@
 [package]
-name = "nightcycle/package"
-description = "A package!"
-version = "0.1.0"
-authors = ["CJ Oyer <coyer@nightcycle.us>"]
+name = "nightcycle/wally-package-template"
+description = "A basic package template for wally"
+version = "0.0.0"
+license = "Apache"
+registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
-registry = "https://github.com/upliftgames/wally-index"
-exclude = ["Packages", ".vscode"]
+include = ["src", "default.project.json", "LICENSE"]
 
 [dependencies]
+
+[dev-dependencies]
+UILabs = "pepeeltoro41/ui-labs@2.4.2"

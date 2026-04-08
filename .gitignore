@@ -1,19 +1,6 @@
-# Directories
-Packages/**
-types
-lints
-build
-serve
-
-# Files
+DevPackages/**
 sourcemap.json
-darklua-sourcemap.json
 wally.lock
-package-lock.json
-keys.txt
-
-# File types
-*.lock
-*.gitconfig
-*.rbxlx
-*.rbxl
+build.rbxl
+build.rbxl.lock
+Packages/**

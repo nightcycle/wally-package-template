@@ -8,4 +8,11 @@
 -- References
 -- Private Functions
 -- Class
-return
+local Module = {}
+
+Module.Face = require(script.Face)
+Module.Line = require(script.Line)
+Module.Point = require(script.Point)
+Module.ENV = require(script.ENV)
+
+return Module
