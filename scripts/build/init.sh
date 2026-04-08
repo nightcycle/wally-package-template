@@ -22,9 +22,18 @@ if [ "$PROJECT" = "dev.project.json" ]; then
 	if [ ! -d "$DEV_WALLY_PACKAGE_DIR" ]; then
 		mkdir -p "$DEV_WALLY_PACKAGE_DIR"
 	fi
+
+	if [ ! -d "dev/shared" ]; then
+		mkdir -p "dev/shared"
+	fi
 fi
 
+: "${WALLY_PACKAGE_DIR:=Packages}"
+
 rojo sourcemap "$PROJECT" --output "$SOURCEMAP"
+
+sh scripts/wally-install.sh
+
 echo "Build complete."
 
 echo "project: '$PROJECT'"
